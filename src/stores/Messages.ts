@@ -7,10 +7,13 @@ import {
 import { produce } from 'immer'
 
 defaults.mutator = (currentState, producer) => produce(currentState, producer)
+defaults.devtools = true
 
 type State = {
   isStreamLive: boolean
   messagesReceived: number
+  eventsPerSecond: number
+  messagesSpeed: number
   messages: WikipediaMessageData[]
 }
 type StoreApi = StoreActionApi<State>
@@ -41,6 +44,8 @@ export type WikipediaMessageData = {
 const initialState: State = {
   isStreamLive: false,
   messagesReceived: 0,
+  eventsPerSecond: 0,
+  messagesSpeed: 10,
   messages: []
 }
 
@@ -65,6 +70,7 @@ function getCountryCodeFromServerName (serverName: string) {
     te: 'in',
     ta: 'lk',
     ce: 'kg',
+    sw: 'cd',
     en: 'us'
   }
 
@@ -75,16 +81,20 @@ function getCountryCodeFromServerName (serverName: string) {
   }
 }
 
+let messageCounter = 0
+let lastMessageTime: number
+
 const actions = {
-  startStream: () => ({ setState, dispatch }: StoreApi) => {
+  startStream: () => ({ getState, setState, dispatch }: StoreApi) => {
     stream = new EventSource(streamUrl)
     stream.onmessage = (message: WikipediaMessage) => {
       const data = JSON.parse(message.data)
-
-      dispatch(actions.addMessage(data))
-      // if (messageCounter % 2 === 0) {
-      //   dispatch(actions.addMessage(data))
-      // }
+      
+      if (messageCounter % getState().messagesSpeed === 0) {
+        dispatch(actions.addMessage(data))
+      }
+      
+      messageCounter++
     }
 
     // @ts-ignore
@@ -100,7 +110,12 @@ const actions = {
     })
   },
   addMessage: (message: WikipediaMessageData) => ({ setState }: StoreApi) => {
+    if (!lastMessageTime) {
+      lastMessageTime = Date.now()
+    }
+
     message.countrycode = getCountryCodeFromServerName(message.server_name)
+
     // @ts-ignore
     setState(draft => {
       draft.messages.unshift(message)
@@ -109,6 +124,19 @@ const actions = {
       if (draft.messages.length > 10) {
         draft.messages.length = 10
       }
+
+      const delta = (Date.now() - lastMessageTime) / 1000
+      lastMessageTime = Date.now()
+      
+      draft.eventsPerSecond = 1 / delta
+
+      
+    })
+  },
+  setMessagesSpeed: (value: number) => ({ setState }: StoreApi) => {
+    //@ts-ignore
+    setState(draft => {
+      draft.messagesSpeed = value
     })
   }
 }

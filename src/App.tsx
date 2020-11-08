@@ -3,7 +3,6 @@ import './App.css'
 import { Layout, Menu, Breadcrumb } from 'antd'
 import NotificationsFactory from 'factories/NotificationFactory'
 
-
 import styled from 'styled-components'
 import { useMessages, WikipediaMessageData } from 'stores/Messages'
 import Controls from 'components/Controls'
@@ -15,14 +14,11 @@ const ContentWrapper = styled.div`
 `
 
 function App () {
-  const [
-    { messages},
-    { startStream}
-  ] = useMessages()
+  const [{ messages }, { startStream }] = useMessages()
 
   useEffect(() => {
     startStream()
-  }, [startStream])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Layout className='layout'>
