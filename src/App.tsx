@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react'
 import './App.css'
-import { Layout, Menu, Badge, Breadcrumb } from 'antd'
+import { Layout, Menu, Breadcrumb } from 'antd'
 import NotificationsFactory from 'factories/NotificationFactory'
-import {
-  PlayCircleFilled,
-  PauseCircleFilled,
-  LoginOutlined
-} from '@ant-design/icons'
+
 
 import styled from 'styled-components'
 import { useMessages, WikipediaMessageData } from 'stores/Messages'
+import Controls from 'components/Controls'
 const { Header, Content, Footer } = Layout
 
 const ContentWrapper = styled.div`
@@ -17,14 +14,10 @@ const ContentWrapper = styled.div`
   padding: 20px;
 `
 
-const Live = styled.div`
-  color: #ff0000;
-`
-
 function App () {
   const [
-    { isStreamLive, messages, messagesReceived },
-    { startStream, stopStream }
+    { messages},
+    { startStream}
   ] = useMessages()
 
   useEffect(() => {
@@ -45,22 +38,7 @@ function App () {
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <ContentWrapper>
-          <div>
-            {isStreamLive ? (
-              <PauseCircleFilled onClick={stopStream} />
-            ) : (
-              <PlayCircleFilled onClick={startStream} />
-            )}
-            <Live>
-              {isStreamLive && (
-                <>
-                  Live <LoginOutlined />
-                </>
-              )}
-            </Live>
-            Messages received{' '}
-            <Badge count={messagesReceived} overflowCount={10000} />
-          </div>
+          <Controls />
           {messages.map((message: WikipediaMessageData) =>
             NotificationsFactory.create(message.type, message)
           )}
