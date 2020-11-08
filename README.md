@@ -16,8 +16,8 @@ Messages are sent from Wikipedia in one-way stream, called _Server-sent event_. 
 
 ## More info
 
-https://en.wikipedia.org/wiki/Factory_method_pattern
-https://sourcemaking.com/design_patterns/factory_method
-https://en.wikipedia.org/wiki/Server-sent_events
-https://developer.mozilla.org/en-US/docs/Web/API/EventSource
-https://wikitech.wikimedia.org/wiki/Event_Platform/EventStreams
+https://en.wikipedia.org/wiki/Factory_method_pattern  
+https://sourcemaking.com/design_patterns/factory_method   
+https://en.wikipedia.org/wiki/Server-sent_events  
+https://developer.mozilla.org/en-US/docs/Web/API/EventSource  
+https://wikitech.wikimedia.org/wiki/Event_Platform/EventStreams 
