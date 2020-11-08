@@ -1,9 +1,9 @@
 import React from 'react'
 import { WikipediaMessageData } from 'stores/Messages'
-import NotificationEdit from 'components/NotificationEdit'
-import NotificationLog from 'components/NotificationLog'
-import NotificationCategorize from 'components/NotificationCategorize'
-import NotificationNew from 'components/NotificationNew'
+import NotificationEdit from 'components/Notification/NotificationEdit'
+import NotificationLog from 'components/Notification/NotificationLog'
+import NotificationCategorize from 'components/Notification/NotificationCategorize'
+import NotificationNew from 'components/Notification/NotificationNew'
 
 type ComponentsMap = {
   [index: string]: ({

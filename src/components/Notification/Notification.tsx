@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Typography } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { flag as getFlag} from 'country-emoji'
+import { flag as getFlag } from 'country-emoji'
 
 const { Title } = Typography
 const Icon = styled.div`
@@ -36,7 +36,7 @@ function LevelTitle ({
   return (
     <Title level={5}>
       {href ? (
-        <a href={href} target='_blank' rel="noreferrer">
+        <a href={href} target='_blank' rel='noreferrer'>
           {children}
         </a>
       ) : (
@@ -49,7 +49,11 @@ function LevelTitle ({
 function User ({ name }: { name: string }) {
   return (
     <span>
-      <a href={`https://en.wikipedia.org/wiki/User:${name}`} target='_blank' rel="noreferrer">
+      <a
+        href={`https://en.wikipedia.org/wiki/User:${name}`}
+        target='_blank'
+        rel='noreferrer'
+      >
         <UserOutlined /> {name}
       </a>
     </span>
@@ -64,13 +68,23 @@ function Flag ({ countryCode }: { countryCode: string }) {
   }
 
   if (!flag) {
-    console.warn('No flag for ', countryCode, `http://${countryCode}.wikipedia.org`)
+    console.warn(
+      'No flag for ',
+      countryCode,
+      `http://${countryCode}.wikipedia.org`
+    )
   }
 
   return <>{flag}</>
 }
 
-export default function Notification ({
+Notification.Icon = Icon
+Notification.Title = LevelTitle
+Notification.User = User
+Notification.Flag = Flag
+Notification.Content = Content
+
+export function Notification ({
   children,
   color
 }: {
@@ -79,9 +93,3 @@ export default function Notification ({
 }) {
   return <Wrapper color={color}>{children}</Wrapper>
 }
-
-Notification.Icon = Icon
-Notification.Title = LevelTitle
-Notification.User = User
-Notification.Flag = Flag
-Notification.Content = Content
