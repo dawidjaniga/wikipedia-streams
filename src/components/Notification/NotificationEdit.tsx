@@ -3,7 +3,7 @@ import { Notification } from 'components/Notification/Notification'
 import { WikipediaMessageData } from 'stores/Messages'
 import { EditOutlined } from '@ant-design/icons'
 import { orange } from '@ant-design/colors'
-const { Icon, User, Title, Content, Flag } = Notification
+const { Icon, User, Title, Content } = Notification
 const color = orange[5]
 
 export default function NotificationEdit ({
@@ -18,9 +18,8 @@ export default function NotificationEdit ({
       </Icon>
       <Content>
         <Title href={details.meta.uri}>{details.title}</Title>
-        <User name={details.user} />
-        {details.countrycode && <Flag countryCode={details.countrycode} />}
         <div dangerouslySetInnerHTML={{ __html: details.parsedcomment }} />
+        <User name={details.user} countryCode={details.countrycode} />
       </Content>
     </Notification>
   )

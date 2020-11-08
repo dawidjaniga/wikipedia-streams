@@ -25,6 +25,13 @@ const Wrapper = styled.div`
 const Content = styled.div`
   flex: 1;
 `
+const UserWrapper = styled.div`
+  margin: 10px 0;
+
+  a {
+    margin-right: 10px;
+  }
+`
 
 function LevelTitle ({
   children,
@@ -46,20 +53,6 @@ function LevelTitle ({
   )
 }
 
-function User ({ name }: { name: string }) {
-  return (
-    <span>
-      <a
-        href={`https://en.wikipedia.org/wiki/User:${name}`}
-        target='_blank'
-        rel='noreferrer'
-      >
-        <UserOutlined /> {name}
-      </a>
-    </span>
-  )
-}
-
 function Flag ({ countryCode }: { countryCode: string }) {
   let flag = getFlag(countryCode) as string
 
@@ -76,6 +69,21 @@ function Flag ({ countryCode }: { countryCode: string }) {
   }
 
   return <>{flag}</>
+}
+
+function User ({ name, countryCode }: { name: string; countryCode?: string }) {
+  return (
+    <UserWrapper>
+      <a
+        href={`https://en.wikipedia.org/wiki/User:${name}`}
+        target='_blank'
+        rel='noreferrer'
+      >
+        <UserOutlined /> {name}
+      </a>
+      {countryCode && <Flag countryCode={countryCode} />}
+    </UserWrapper>
+  )
 }
 
 Notification.Icon = Icon
