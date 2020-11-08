@@ -6,7 +6,7 @@ import { lime } from '@ant-design/colors'
 const { Icon, User, Title, Content } = Notification
 const color = lime[5]
 
-export default function NotificationEdit ({
+export default function NotificationNew ({
   details
 }: {
   details: WikipediaMessageData

@@ -28,7 +28,7 @@ type WikipediaMessage = {
 
 export type WikipediaMessageData = {
   page_title: string
-  rev_id: number
+  id: number
   type: string
   comment: string
   parsedcomment: string
@@ -65,6 +65,7 @@ function getCountryCodeFromServerName (serverName: string) {
     da: 'dk',
     ko: 'kr',
     ka: 'ge',
+    fy: 'nl',
     oc: 'ad',
     or: 'in',
     he: 'il',

@@ -7,7 +7,7 @@ const { Icon, User, Title, Content } = Notification
 
 const color = blue[5]
 
-export default function NotificationEdit ({
+export default function NotificationLog ({
   details
 }: {
   details: WikipediaMessageData

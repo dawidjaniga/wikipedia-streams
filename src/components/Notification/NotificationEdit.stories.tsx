@@ -10,7 +10,7 @@ export default {
 export const Primary = () => (
   <NotificationEdit
     details={{
-      rev_id: 123,
+      id: 123,
       title: 'Article name',
       page_title: 'Article name',
       countrycode: 'pl',

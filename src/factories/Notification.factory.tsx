@@ -21,11 +21,12 @@ export default class NotificationFactory {
     categorize: NotificationCategorize,
     new: NotificationNew
   }
+
   static create (type: string, details: WikipediaMessageData) {
     const Component = NotificationFactory.componentsMap[type]
 
     if (Component) {
-      return <Component details={details} />
+      return <Component details={details} key={details.id} />
     } else {
       console.warn('No component for type: ', type, details)
     }
