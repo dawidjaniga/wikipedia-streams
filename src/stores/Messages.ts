@@ -44,8 +44,6 @@ const initialState: State = {
   messages: []
 }
 
-let messageCounter = 0
-
 function getCountryCodeFromServerName (serverName: string) {
   const [countryCode] = serverName.split('.')
   const nonStandardMap: { [index: string]: string } = {
@@ -70,7 +68,6 @@ const actions = {
       // if (messageCounter % 2 === 0) {
       //   dispatch(actions.addMessage(data))
       // }
-      messageCounter++
     }
 
     // @ts-ignore

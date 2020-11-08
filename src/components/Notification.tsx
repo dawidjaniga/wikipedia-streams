@@ -35,7 +35,7 @@ function LevelTitle ({
   return (
     <Title level={5}>
       {href ? (
-        <a href={href} target='_blank'>
+        <a href={href} target='_blank' rel="noreferrer">
           {children}
         </a>
       ) : (
@@ -48,7 +48,7 @@ function LevelTitle ({
 function User ({ name }: { name: string }) {
   return (
     <span>
-      <a href={`https://en.wikipedia.org/wiki/User:${name}`} target='_blank'>
+      <a href={`https://en.wikipedia.org/wiki/User:${name}`} target='_blank' rel="noreferrer">
         <UserOutlined /> {name}
       </a>
     </span>
@@ -56,7 +56,7 @@ function User ({ name }: { name: string }) {
 }
 
 function Flag ({ countryCode }: { countryCode: string }) {
-  return <img src={`https://www.countryflags.io/${countryCode}/flat/16.png`} />
+  return <img src={`https://www.countryflags.io/${countryCode}/flat/16.png`} alt={"Flag " + countryCode}/>
 }
 
 export default function Notification ({
