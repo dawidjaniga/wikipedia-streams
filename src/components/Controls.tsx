@@ -5,7 +5,7 @@ import {
   LoginOutlined
 } from '@ant-design/icons'
 
-import { Typography, Card, Col, Row, Statistic, Slider } from 'antd'
+import { Typography, Card, Col, Row, Statistic, Slider, Button } from 'antd'
 import styled from 'styled-components'
 import { useMessages } from 'stores/Messages'
 
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   margin-bottom: 20px;
 `
 
-const Live = styled.div`
+const Live = styled.span`
   color: ${red[5]};
 `
 
@@ -28,25 +28,38 @@ export default function Controls () {
 
   return (
     <Wrapper>
+      <Title level={3}>Controls</Title>
+      <Title level={5}>
+        Status{' '}
+        {isStreamLive ? (
+          <Live>
+            Live <LoginOutlined />
+          </Live>
+        ) : (
+          'Offline'
+        )}
+      </Title>
+
+      {isStreamLive ? (
+        <Button type='primary' onClick={stopStream}>
+          <PauseCircleFilled />
+        </Button>
+      ) : (
+        <Button type='primary' onClick={startStream}>
+          <PlayCircleFilled />
+        </Button>
+      )}
+      <Title level={5}>
+        Set notifications receiving speed: 1 = maxium, 100 = minimum
+      </Title>
       <Slider
         value={messagesSpeed}
         onChange={setMessagesSpeed}
         min={1}
         max={100}
       />
-      {isStreamLive ? (
-        <PauseCircleFilled onClick={stopStream} />
-      ) : (
-        <PlayCircleFilled onClick={startStream} />
-      )}
-      <Live>
-        {isStreamLive && (
-          <>
-            Live <LoginOutlined />
-          </>
-        )}
-      </Live>
-      <Title level={3}>Messages</Title>
+
+      <Title level={3}>Notifications</Title>
       <Row gutter={16}>
         <Col span={12}>
           <Card>
