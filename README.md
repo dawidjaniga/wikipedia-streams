@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Wikipedia Streams
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e554302f-c035-48d3-a595-4daae4915491/deploy-status)](https://app.netlify.com/sites/wikipedia-streams/deploys)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
