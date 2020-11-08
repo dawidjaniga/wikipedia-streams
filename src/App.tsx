@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './App.css'
 import { Layout, Menu, Breadcrumb } from 'antd'
-import NotificationsFactory from 'factories/NotificationFactory'
 
 import styled from 'styled-components'
-import { useMessages, WikipediaMessageData } from 'stores/Messages'
+
 import Controls from 'components/Controls'
+import Messages from 'components/Messages'
 const { Header, Content, Footer } = Layout
 
 const ContentWrapper = styled.div`
@@ -14,12 +14,6 @@ const ContentWrapper = styled.div`
 `
 
 function App () {
-  const [{ messages }, { startStream }] = useMessages()
-
-  useEffect(() => {
-    startStream()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <Layout className='layout'>
       <Header>
@@ -35,9 +29,7 @@ function App () {
         </Breadcrumb>
         <ContentWrapper>
           <Controls />
-          {messages.map((message: WikipediaMessageData) =>
-            NotificationsFactory.create(message.type, message)
-          )}
+          <Messages />
         </ContentWrapper>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
