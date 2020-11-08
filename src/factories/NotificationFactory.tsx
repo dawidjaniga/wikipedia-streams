@@ -16,6 +16,7 @@ type ComponentsMap = {
 export default class NotificationFactory {
   static componentsMap: ComponentsMap = {
     edit: NotificationEdit,
+    142: NotificationEdit,
     log: NotificationLog,
     categorize: NotificationCategorize,
     new: NotificationNew
@@ -24,7 +25,6 @@ export default class NotificationFactory {
     const Component = NotificationFactory.componentsMap[type]
 
     if (Component) {
-      console.warn(details)
       return <Component details={details} />
     } else {
       console.warn('No component for type: ', type, details)

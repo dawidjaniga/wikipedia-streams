@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Typography } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
+import { flag as getFlag} from 'country-emoji'
 
 const { Title } = Typography
 const Icon = styled.div`
@@ -56,7 +57,17 @@ function User ({ name }: { name: string }) {
 }
 
 function Flag ({ countryCode }: { countryCode: string }) {
-  return <img src={`https://www.countryflags.io/${countryCode}/flat/16.png`} alt={"Flag " + countryCode}/>
+  let flag = getFlag(countryCode) as string
+
+  if (countryCode === 'eo') {
+    flag = '🌍'
+  }
+
+  if (!flag) {
+    console.warn('No flag for ', countryCode, `http://${countryCode}.wikipedia.org`)
+  }
+
+  return <>{flag}</>
 }
 
 export default function Notification ({

@@ -48,6 +48,23 @@ function getCountryCodeFromServerName (serverName: string) {
   const [countryCode] = serverName.split('.')
   const nonStandardMap: { [index: string]: string } = {
     el: 'gr',
+    hy: 'am',
+    zh: 'cn',
+    uk: 'ua',
+    ur: 'pk',
+    cs: 'cz',
+    fa: 'ir',
+    ja: 'jp',
+    hi: 'in',
+    da: 'dk',
+    ko: 'kr',
+    ka: 'ge',
+    oc: 'ad',
+    or: 'in',
+    he: 'il',
+    te: 'in',
+    ta: 'lk',
+    ce: 'kg',
     en: 'us'
   }
 

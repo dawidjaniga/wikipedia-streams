@@ -13,7 +13,7 @@ export default function NotificationEdit ({
   details: WikipediaMessageData
 }) {
   return (
-    <Notification key={details.rev_id} color={color}>
+    <Notification color={color}>
       <Icon>
         <HighlightOutlined />
       </Icon>
