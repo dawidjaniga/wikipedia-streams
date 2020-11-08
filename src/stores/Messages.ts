@@ -30,6 +30,7 @@ export type WikipediaMessageData = {
   page_title: string
   rev_id: number
   type: string
+  comment: string
   parsedcomment: string
   log_action_comment: string
   title: string

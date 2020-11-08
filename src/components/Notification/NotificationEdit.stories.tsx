@@ -15,6 +15,7 @@ export const Primary = () => (
       page_title: 'Article name',
       countrycode: 'pl',
       parsedcomment: 'Lorem ipsum',
+      comment: 'Lorem ipsum',
       type: 'edit',
       log_action_comment: '',
       server_name: 'pl.wikipedia.org',
