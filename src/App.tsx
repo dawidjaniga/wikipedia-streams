@@ -32,7 +32,7 @@ function App () {
         </Inner>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
-        Notifications Factory ©2020 Created by Janigowski
+        ©2020 Created by <a href='http://github.com/dawidjaniga/'>Janigowski</a>
       </Footer>
     </Layout>
   )
